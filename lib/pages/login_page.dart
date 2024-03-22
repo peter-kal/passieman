@@ -12,17 +12,19 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: YaruDialogTitleBar(
+        isMaximizable: true,
+        isMinimizable: true,
         leading: YaruIconButton(
           onPressed: () => BlocProvider.of<ScreenNavigationBloc>(context)
               .add(const HomePageEvent()),
           icon: const Icon(Icons.arrow_back),
         ),
-        title: const Text("Login Page"),
+        title: Text(thelogin.loginSite.toString()),
       ),
       body: Center(
-        child: Column(children: [
-          Text(thelogin.loginSite.toString()),
-          Text(thelogin.loginPassword.toString())
+        child: ListView(children: [
+          SelectableText(thelogin.loginUsername.toString()),
+          SelectableText(thelogin.loginPassword.toString())
         ]),
       ),
     );

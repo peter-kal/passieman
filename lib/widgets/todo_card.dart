@@ -32,8 +32,7 @@ class LoginCard extends StatelessWidget {
                   Text(
                     login.loginSite.toString(),
                     style: TextStyle(
-                        color: Theme.of(context).primaryColor,
-                        fontSize: MediaQuery.sizeOf(context).height * 0.03),
+                        color: Theme.of(context).primaryColor, fontSize: 25),
                   ),
                   TextField(
                     controller: usernameController,
@@ -42,7 +41,14 @@ class LoginCard extends StatelessWidget {
                   TextField(
                     controller: passwordController,
                     decoration: InputDecoration(border: InputBorder.none),
-                  )
+                  ),
+                  ElevatedButton(
+                      onPressed: () {
+                        context
+                            .read<LoginsBlocBloc>()
+                            .add(DeleteLoginEvent(login.id));
+                      },
+                      child: const Text("Delete"))
                 ],
               ),
             ),

@@ -20,12 +20,18 @@ class HomePage extends StatelessWidget {
           onPressed: () => BlocProvider.of<ScreenNavigationBloc>(context)
               .add(const CreateLoginPageEvent())),
       appBar: YaruDialogTitleBar(
+        actions: [
+          IconButton(
+              onPressed: () {
+                context
+                    .read<ScreenNavigationBloc>()
+                    .add(const SettingsPageEvent());
+              },
+              icon: const Icon(Icons.settings))
+        ],
+        isMaximizable: true,
+        isMinimizable: true,
         centerTitle: true,
-        leading: YaruIconButton(
-          icon: const Icon(YaruIcons.refresh),
-          onPressed: () =>
-              context.read<LoginsBlocBloc>().add(const LoadLoginsEvent()),
-        ),
         title: Text(
             "Passieman | ${AppLocalizations.of(context)!.allLoginsMessageonHomePageAppBar}"),
       ),

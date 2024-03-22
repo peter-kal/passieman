@@ -11,22 +11,22 @@ class IsarService {
 
   Future<void> saveLogin(Login newLogin) async {
     final isar = await db;
-    isar.writeTxn(() => isar.logins.put(newLogin));
+    await isar.writeTxn(() async => isar.logins.put(newLogin));
   }
 
   Future<void> deleteLogin(Id loginid) async {
     final isar = await db;
-    isar.writeTxn(() => isar.logins.delete(loginid));
+    await isar.writeTxn(() async => isar.logins.delete(loginid));
   }
 
   Future<List<Login>> loadAllLogins() async {
     final isar = await db;
-    final logins = isar.logins.where().sortByLoginCreationDate().findAll();
+    var logins = isar.logins.where().sortByLoginCreationDateDesc().findAll();
     return logins;
   }
 
   Future<Isar> openDB() async {
-    final dir = await getApplicationDocumentsDirectory();
+    final dir = await getApplicationSupportDirectory();
     if (Isar.instanceNames.isEmpty) {
       return await Isar.open([LoginSchema],
           directory: dir.path, inspector: true);

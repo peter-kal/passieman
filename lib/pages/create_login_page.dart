@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,6 +17,8 @@ class CreateLoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: YaruDialogTitleBar(
+        isMaximizable: true,
+        isMinimizable: true,
         title: Text(AppLocalizations.of(context)!.createAlogin),
         leading: YaruIconButton(
           onPressed: () => BlocProvider.of<ScreenNavigationBloc>(context)
