@@ -15,4 +15,10 @@ class SettingsPageState extends ScreenNavigationState {}
 
 class HomePageState extends ScreenNavigationState {}
 
-class LoginPageState extends ScreenNavigationState {}
+class LoginPageState extends ScreenNavigationState {
+  const LoginPageState(this.forloginpagelogin);
+  final Login forloginpagelogin;
+
+  @override
+  List<Object> get props => [forloginpagelogin];
+}

@@ -8,10 +8,11 @@ sealed class ScreenNavigationEvent extends Equatable {
 }
 
 class LoginPageEvent extends ScreenNavigationEvent {
-  const LoginPageEvent();
+  const LoginPageEvent(this.forloginpagelogin);
 
+  final Login forloginpagelogin;
   @override
-  List<Object> get props => [];
+  List<Object> get props => [forloginpagelogin];
 }
 
 class HomePageEvent extends ScreenNavigationEvent {

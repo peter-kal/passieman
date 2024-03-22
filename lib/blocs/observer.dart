@@ -23,13 +23,13 @@ class MyBlocObserver extends BlocObserver {
   void onChange(BlocBase bloc, Change change) {
     super.onChange(bloc, change);
     // TODO: implement onChange
-    print("chan ");
+    print("chan ${change.toString()}");
   }
 
   @override
   void onTransition(Bloc bloc, Transition transition) {
     super.onTransition(bloc, transition);
     // TODO: implement onChange
-    print("tran");
+    print("tran ${transition.toString()}");
   }
 }

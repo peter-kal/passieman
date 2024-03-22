@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:passieman/blocs/passieman_blocs.dart';
+import 'package:passieman/login_repo/repo.dart';
 import 'package:passieman/pages/create_login_page.dart';
 import 'package:passieman/pages/home_page.dart';
 import 'package:passieman/pages/login_page.dart';
@@ -12,8 +13,10 @@ Future<void> main() async {
   Bloc.observer = MyBlocObserver();
   await YaruWindowTitleBar.ensureInitialized();
   runApp(MultiBlocProvider(providers: [
+    RepositoryProvider(create: (_) => IsarService()),
     BlocProvider(
-        create: (_) => ScreenNavigationBloc()..add(const HomePageEvent()))
+        create: (_) => ScreenNavigationBloc()..add(const HomePageEvent())),
+    BlocProvider(create: (_) => LoginsBlocBloc()..add(const LoadLoginsEvent()))
   ], child: const PassiemanApp()));
 }
 
@@ -36,9 +39,9 @@ class PassiemanApp extends StatelessWidget {
               if (state is HomePageState) {
                 return const HomePage();
               } else if (state is CreateLoginPageState) {
-                return const CreateLoginPage();
+                return CreateLoginPage();
               } else if (state is LoginPageState) {
-                return const LoginPage();
+                return LoginPage(state.forloginpagelogin);
               } else if (state is SettingsPageState) {
                 return const SettingsPage();
               } else {
