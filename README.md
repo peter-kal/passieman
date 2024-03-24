@@ -1,16 +1,13 @@
 # passieman
 
-A new Flutter project.
+A WIP password manager app. 
 
-## Getting Started
+# Libraries Used 
 
-This project is a starting point for a Flutter application.
+State Management solution: flutter_bloc
+Database Solution: isar 
 
-A few resources to get you started if this is your first Flutter project:
+# Do not use 
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+While isar is fuctioning, the database is not yet encrypted, use at your own risk.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
